@@ -1,0 +1,1501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curtains — JJ Sofa Decoraters</title>
+    <meta
+      name="description"
+      content="JJ Sofa Decoraters offers custom curtains, drapes, blinds, and window coverings. Premium fabrics, tailored fits, professional installation since 1998."
+    />
+    <meta
+      name="keywords"
+      content="curtains, drapes, blinds, window coverings, custom curtains, curtain fabric, curtain design, home decor, India"
+    />
+    <meta property="og:title" content="Curtains — JJ Sofa Decoraters" />
+    <meta
+      property="og:description"
+      content="Your Home, Our Craft. Since 1998."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪟</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #faf7f2;
+        color: #1c1c1e;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+      }
+      ::selection {
+        background: #c9a84c;
+        color: #fff;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #faf7f2;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c9a84c;
+        border-radius: 4px;
+      }
+
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #faf7f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.6s ease,
+          visibility 0.6s ease;
+      }
+      .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .preloader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid #c9a84c;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .navbar {
+        transition:
+          background 0.4s ease,
+          backdrop-filter 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+      .navbar.scrolled {
+        background: rgba(250, 247, 242, 0.85);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-link {
+        position: relative;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #c9a84c;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .nav-link.active {
+        color: #c9a84c;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        line-height: 1.05;
+      }
+      .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.75rem);
+      }
+
+      .float-anim {
+        animation: floaty 4s ease-in-out infinite;
+      }
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-18px);
+        }
+      }
+
+      .product-card {
+        transition:
+          transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.4s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      }
+      .product-img-wrap {
+        overflow: hidden;
+        border-radius: 16px 16px 0 0;
+      }
+      .product-img-wrap img {
+        transition: transform 0.6s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .product-card:hover .product-img-wrap img {
+        transform: scale(1.08);
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .gallery-item {
+        overflow: hidden;
+        border-radius: 16px;
+        cursor: pointer;
+        position: relative;
+      }
+      .gallery-item img {
+        transition: transform 0.6s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        color: #fff;
+        font-size: 2rem;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 50;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #25d366;
+        color: #fff;
+        font-size: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+      .whatsapp-float .pulse {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          infinite;
+      }
+      @keyframes pulse-ring {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+        }
+        70% {
+          box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 90px;
+        right: 24px;
+        z-index: 50;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1c1c1e;
+        color: #faf7f2;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .back-to-top:hover {
+        background: #c9a84c;
+        transform: translateY(-3px);
+      }
+
+      .btn-primary {
+        display: inline-block;
+        padding: 14px 34px;
+        border-radius: 9999px;
+        background: #c9a84c;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border: 2px solid #c9a84c;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: #b5942e;
+        border-color: #b5942e;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+      }
+
+      .btn-secondary {
+        display: inline-block;
+        padding: 14px 34px;
+        border-radius: 9999px;
+        background: transparent;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+      .btn-secondary:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .btn-gold-outline {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: 9999px;
+        background: transparent;
+        color: #c9a84c;
+        font-weight: 600;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        border: 2px solid #c9a84c;
+        cursor: pointer;
+      }
+      .btn-gold-outline:hover {
+        background: #c9a84c;
+        color: #fff;
+      }
+
+      .dark-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(201, 168, 76, 0.15);
+        transition: all 0.3s ease;
+      }
+      .dark-card:hover {
+        border-color: rgba(201, 168, 76, 0.4);
+        transform: translateY(-4px);
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1.5px solid #e0dcd3;
+        background: #fff;
+        font-size: 0.95rem;
+        transition: border 0.3s ease;
+        outline: none;
+        font-family: "Inter", sans-serif;
+      }
+      .form-input:focus {
+        border-color: #c9a84c;
+        box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+      }
+
+      .divider-gold {
+        width: 60px;
+        height: 3px;
+        background: #c9a84c;
+        border-radius: 4px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preloader" id="preloader">
+      <div class="preloader-spinner"></div>
+    </div>
+
+    <header class="navbar fixed top-0 left-0 right-0 z-50 py-4" id="navbar">
+      <div
+        class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="flex items-center gap-2 text-xl lg:text-2xl font-bold font-serif"
+          style="font-family: &quot;Playfair Display&quot;, serif"
+        >
+          <span style="font-size: 1.4em">🪟</span>
+          <span class="tracking-tight"
+            >JJ <span style="color: #c9a84c">Curtains</span></span
+          >
+        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="home"
+            >Home</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="styles"
+            >Styles</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="fabrics"
+            >Fabrics</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="gallery"
+            >Gallery</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="contact"
+            >Contact</a
+          >
+          <a
+            href="index.html"
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            >Sofas</a
+          >
+        </nav>
+        <button
+          class="lg:hidden text-2xl p-1 focus:outline-none"
+          id="hamburger"
+          aria-label="Toggle menu"
+        >
+          <i class="fas fa-bars" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </header>
+
+    <div
+      class="mobile-drawer lg:hidden shadow-xl"
+      id="mobileDrawer"
+      style="
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(250, 247, 242, 0.97);
+        backdrop-filter: blur(20px);
+        transform: translateY(-110%);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 40;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      "
+    >
+      <nav class="flex flex-col py-6 px-5 gap-5">
+        <a class="nav-link text-base font-medium" data-target="home">Home</a>
+        <a class="nav-link text-base font-medium" data-target="styles"
+          >Styles</a
+        >
+        <a class="nav-link text-base font-medium" data-target="fabrics"
+          >Fabrics</a
+        >
+        <a class="nav-link text-base font-medium" data-target="gallery"
+          >Gallery</a
+        >
+        <a class="nav-link text-base font-medium" data-target="contact"
+          >Contact</a
+        >
+        <a href="index.html" class="nav-link text-base font-medium">Sofas</a>
+      </nav>
+    </div>
+
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center overflow-hidden pt-16"
+      style="
+        background: linear-gradient(
+          135deg,
+          #1a1208 0%,
+          #2c1f14 40%,
+          #3d2b1a 100%
+        );
+      "
+    >
+      <div
+        class="absolute inset-0 opacity-[0.04]"
+        style="
+          background-image: url(&quot;https://www.transparenttextures.com/patterns/dark-mosaic.png&quot;);
+        "
+      ></div>
+      <div
+        class="absolute top-20 left-10 w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-20 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="text-center lg:text-left fade-in visible">
+            <p
+              class="text-yellow-600 font-medium tracking-[0.25em] uppercase text-sm lg:text-base mb-4"
+              style="color: #c9a84c"
+            >
+              Since 1998 — Custom Curtains & Drapes
+            </p>
+            <h1 class="hero-title text-white font-bold leading-tight mb-6">
+              Curtains That <br /><span style="color: #c9a84c">Define</span>
+              <br />Your Space.
+            </h1>
+            <p
+              class="text-gray-300 text-base lg:text-lg max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed"
+            >
+              From sheer elegance to blackout comfort — our custom curtains,
+              blinds, and drapes are tailored to your style and budget.
+              Transform your home with JJ Sofa Decoraters.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <a href="#styles" class="btn-primary">
+                <i class="fas fa-tshirt mr-2"></i>Explore Styles
+              </a>
+              <a href="#contact" class="btn-secondary">
+                <i class="fas fa-phone-alt mr-2"></i>Get a Quote
+              </a>
+            </div>
+            <div
+              class="flex items-center gap-6 mt-10 justify-center lg:justify-start text-gray-400 text-sm"
+            >
+              <span
+                ><i class="fas fa-star text-yellow-500 mr-1"></i> Trusted Since
+                1998</span
+              >
+              <span
+                ><i class="fas fa-shield-alt mr-1" style="color: #c9a84c"></i> 5
+                Yr Warranty</span
+              >
+              <span
+                ><i
+                  class="fas fa-ruler-combined mr-1"
+                  style="color: #c9a84c"
+                ></i>
+                Custom Fit</span
+              >
+            </div>
+          </div>
+
+          <div class="hidden lg:flex justify-center items-center relative">
+            <div class="float-anim relative w-full max-w-lg">
+              <div
+                class="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1616627561959-8e02ebd1c83c?w=600&q=80"
+                  alt="Elegant curtains"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-6 text-center"
+                style="
+                  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+                  pointer-events: none;
+                "
+              >
+                <p class="text-white font-serif text-lg font-semibold">
+                  Premium Drapery Collection
+                </p>
+                <p style="color: #c9a84c" class="font-semibold">
+                  Starting ₹2,999
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-6 lg:py-8"
+      style="
+        background: #1a1208;
+        border-top: 1px solid rgba(201, 168, 76, 0.15);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      "
+    >
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-ruler-combined text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">Custom Tailored</p>
+              <p class="text-gray-400 text-xs">Perfect window fit</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-palette text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">200+ Fabrics</p>
+              <p class="text-gray-400 text-xs">Colors & textures</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-shield-alt text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">5 Year Warranty</p>
+              <p class="text-gray-400 text-xs">Quality guaranteed</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-tag text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">Best Prices</p>
+              <p class="text-gray-400 text-xs">Factory direct</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="styles" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Our Collection
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            Curtain Styles for <br class="hidden sm:block" />Every Room
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+
+        <div
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          id="stylesGrid"
+        ></div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24" style="background: #1a1208">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Fabrics & Materials
+          </p>
+          <h2 class="section-title font-bold text-white mb-4">
+            Choose Your Perfect Fabric
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div class="fade-in dark-card rounded-2xl p-8 text-center">
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-feather-alt text-2xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 font-serif">
+              Sheer Fabrics
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Lightweight and airy — perfect for living rooms and spaces where
+              you want natural light with a soft, elegant drape.
+            </p>
+          </div>
+          <div class="fade-in dark-card rounded-2xl p-8 text-center">
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-moon text-2xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 font-serif">
+              Blackout Curtains
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Total light blockage with thermal insulation — ideal for bedrooms,
+              home theaters, and nurseries.
+            </p>
+          </div>
+          <div
+            class="fade-in dark-card rounded-2xl p-8 text-center sm:col-span-2 lg:col-span-1"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-leaf text-2xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 font-serif">
+              Eco-Friendly Linen
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Sustainable linen blends that are breathable, durable, and get
+              softer with every wash.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fabrics" class="py-16 lg:py-24" style="background: #f5f0e8">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Why Choose Us
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            The JJ Curtain <br class="hidden sm:block" />Difference
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i
+                class="fas fa-ruler-combined text-xl"
+                style="color: #c9a84c"
+              ></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Precision Tailoring</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Every curtain is cut and stitched to your exact window
+              measurements.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-tools text-xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">
+              Professional Installation
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Expert fitting with sturdy hardware — no sagging, no gaps.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-swatchbook text-xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">200+ Fabric Choices</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              From luxury velvets to cottons — find your perfect match.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-headset text-xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Free Consultation</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Our designers visit your home to suggest the perfect look.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Gallery
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            Our Work Speaks
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="curtain1.png"
+              alt="Modern curtain design"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="curtain2.png"
+              alt="Bedroom curtains"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="curtain3.png"
+              alt="Luxury drapes"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="curtain4.png"
+              alt="Cozy room with curtains"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="curtain5.png"
+              alt="Window treatment"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-16 lg:py-24 relative overflow-hidden"
+      style="
+        background: linear-gradient(
+          135deg,
+          #1a1208 0%,
+          #2c1f14 50%,
+          #3d2b1a 100%
+        );
+      "
+    >
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="
+          background-image: url(&quot;https://www.transparenttextures.com/patterns/dark-mosaic.png&quot;);
+        "
+      ></div>
+      <div class="max-w-4xl mx-auto px-5 lg:px-8 text-center relative z-10">
+        <div class="fade-in">
+          <h2 class="section-title font-bold text-white mb-4">
+            Ready to Transform <br />Your Windows?
+          </h2>
+          <p class="text-gray-300 mb-8 max-w-lg mx-auto">
+            Get a free consultation and quote. Our design experts will visit
+            your home to help you find the perfect curtains.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://wa.me/919344667546"
+              target="_blank"
+              class="btn-primary"
+              style="background: #25d366; border-color: #25d366"
+            >
+              <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+            </a>
+            <a href="tel:+919344667546" class="btn-secondary">
+              <i class="fas fa-phone-alt mr-2"></i>Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Get In Touch
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            Let's Create Your <br class="hidden sm:block" />Perfect Curtains
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="fade-in space-y-8">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-map-marker-alt" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Our Showroom</h4>
+                <p class="text-gray-500 text-sm">
+                  Nanjundapuram, Ramanathapuram<br />Coimbatore — 641045, Tamil
+                  Nadu<br />Straight opposite to BOI Bank
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-phone-alt" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Call Us</h4>
+                <p class="text-gray-500 text-sm">+91 93446 67546</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-envelope" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Email</h4>
+                <p class="text-gray-500 text-sm">
+                  jjsofadecoraters@gmail.com
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-clock" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Working Hours</h4>
+                <p class="text-gray-500 text-sm">
+                  Mon – Sat: 10:00 AM – 8:00 PM<br />Sunday: Closed
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in">
+            <form
+              class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border border-gray-100"
+              id="contactForm"
+              novalidate
+            >
+              <input type="hidden" name="_captcha" value="true" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New enquiry from JJ Sofa Decoraters website"
+              />
+              <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                    >Your Name *</label
+                  >
+                  <input
+                    type="text"
+                    class="form-input"
+                    id="formName"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                  />
+                  <p class="text-red-500 text-xs mt-1 hidden" id="nameError">
+                    Please enter your name
+                  </p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                    >Phone *</label
+                  >
+                  <input
+                    type="tel"
+                    class="form-input"
+                    id="formPhone"
+                    name="phone"
+                    placeholder="+91 93446 67546"
+                    required
+                  />
+                  <p class="text-red-500 text-xs mt-1 hidden" id="phoneError">
+                    Please enter your phone number
+                  </p>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                  >Email *</label
+                >
+                  <input
+                    type="email"
+                    class="form-input"
+                    id="formEmail"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                  />
+                <p class="text-red-500 text-xs mt-1 hidden" id="emailError">
+                  Please enter a valid email
+                </p>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                  >I'm Interested In</label
+                >
+                <select class="form-input" id="formInterest" name="interest">
+                  <option value="">Select a category</option>
+                  <option>Sheer Curtains</option>
+                  <option>Blackout Curtains</option>
+                  <option>Linen Curtains</option>
+                  <option>Velvet Drapes</option>
+                  <option>Vertical / Horizontal Blinds</option>
+                  <option>Custom Window Treatments</option>
+                </select>
+              </div>
+              <div class="mb-5">
+                <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                  >Message</label
+                >
+                  <textarea
+                    class="form-input"
+                    id="formMessage"
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us about your window size and style preference..."
+                  ></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full text-center">
+                <i class="fas fa-paper-plane mr-2"></i>Send Enquiry
+              </button>
+              <p
+                class="text-green-600 text-sm mt-3 text-center hidden"
+                id="formSuccess"
+              >
+                <i class="fas fa-check-circle mr-1"></i> Thank you! We'll get
+                back to you within 24 hours.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="py-12 lg:py-16"
+      style="
+        background: #1a1208;
+        border-top: 1px solid rgba(201, 168, 76, 0.12);
+      "
+    >
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div>
+            <div
+              class="flex items-center gap-2 text-xl font-bold text-white mb-3 font-serif"
+            >
+              <span>🪟</span>
+              <span
+                >JJ <span style="color: #c9a84c">Sofa Decoraters</span></span
+              >
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Your Home, Our Craft. Since 1998 — premium handcrafted curtains
+              and sofas made in India with love and generations of artistry.
+            </p>
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-4 font-serif">Quick Links</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="home"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#styles"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="styles"
+                  >Styles</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#fabrics"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="fabrics"
+                  >Fabrics</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="gallery"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="contact"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-4 font-serif">Categories</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#styles"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Sheer Curtains</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#styles"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Blackout Curtains</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#styles"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Velvet Drapes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#styles"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Linen Curtains</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Sofas & Furniture</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-4 font-serif">Contact Info</h4>
+            <ul class="space-y-2.5 text-sm text-gray-400">
+              <li>
+                <i
+                  class="fas fa-map-marker-alt mr-2"
+                  style="color: #c9a84c"
+                ></i>
+                Coimbatore, Tamil Nadu
+              </li>
+              <li>
+                <i class="fas fa-phone-alt mr-2" style="color: #c9a84c"></i> +91
+                93446 67546
+              </li>
+              <li>
+                <i class="fas fa-envelope mr-2" style="color: #c9a84c"></i>
+                jjsofadecoraters@gmail.com
+              </li>
+              <li>
+                <i class="fas fa-clock mr-2" style="color: #c9a84c"></i>
+                Mon–Sat: 10AM–8PM
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+        >
+          <p class="text-gray-500 text-sm">
+            &copy; 2026 JJ Sofa Decoraters. All rights reserved.
+          </p>
+          <p class="text-gray-500 text-sm">Made with ❤️ in India</p>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/919344667546"
+      target="_blank"
+      class="whatsapp-float"
+      aria-label="Chat on WhatsApp"
+    >
+      <span class="pulse"></span>
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+      (function () {
+        const styles = [
+          {
+            name: "Blackout Pro",
+            desc: "Complete light blockage with thermal insulation. Ideal for bedrooms and media rooms.",
+            price: "₹4,999/pair",
+            img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80",
+          },
+          {
+            name: "Velvet Luxe",
+            desc: "Rich velvet drapes with a luxurious sheen. Heavy weight with elegant pleating.",
+            price: "₹6,999/pair",
+            img: "https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=400&q=80",
+          },
+          {
+            name: "Linen Touch",
+            desc: "Eco-friendly linen curtains with a relaxed, natural drape for modern homes.",
+            price: "₹3,999/pair",
+            img: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&q=80",
+          },
+          {
+            name: "Printed Panels",
+            desc: "Custom digital-printed curtains with your choice of patterns and colors.",
+            price: "₹5,499/pair",
+            img: "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=400&q=80",
+          },
+          {
+            name: "Roman Blinds",
+            desc: "Sleek fabric blinds that fold neatly. Perfect for a clean, minimalist look.",
+            price: "₹3,499",
+            img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
+          },
+        ];
+
+        function buildStyles() {
+          const grid = document.getElementById("stylesGrid");
+          grid.innerHTML = styles
+            .map(
+              (s) => `
+      <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 fade-in">
+        <div class="product-img-wrap aspect-[4/3] relative">
+          <img src="${s.img}" alt="${s.name}" loading="lazy" />
+          <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold" style="color:#C9A84C;">${s.price}</div>
+        </div>
+        <div class="p-5 lg:p-6">
+          <h3 class="font-bold text-gray-900 text-lg mb-1.5">${s.name}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">${s.desc}</p>
+          <div class="flex gap-2">
+            <button class="btn-gold-outline text-xs flex-1 text-center"><i class="fas fa-eye mr-1"></i>View Details</button>
+            <a href="https://wa.me/919344667546?text=Hi!%20I'm%20interested%20in%20the%20${encodeURIComponent(s.name)}" target="_blank" class="btn-gold-outline text-xs flex-1 text-center" style="background:#C9A84C;color:#fff;"><i class="fab fa-whatsapp mr-1"></i>Enquire</a>
+          </div>
+        </div>
+      </div>
+    `,
+            )
+            .join("");
+          setTimeout(() => observeFadeIns(), 50);
+        }
+
+        function initNavbar() {
+          const navbar = document.getElementById("navbar");
+          window.addEventListener("scroll", () => {
+            navbar.classList.toggle("scrolled", window.scrollY > 50);
+          });
+        }
+
+        function initHamburger() {
+          const btn = document.getElementById("hamburger");
+          const drawer = document.getElementById("mobileDrawer");
+          const icon = document.getElementById("hamburger-icon");
+          btn.addEventListener("click", () => {
+            const open = drawer.classList.toggle("open");
+            drawer.style.transform = open
+              ? "translateY(0)"
+              : "translateY(-110%)";
+            drawer.style.opacity = open ? "1" : "0";
+            icon.className = open ? "fas fa-times" : "fas fa-bars";
+          });
+          drawer.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+              drawer.style.transform = "translateY(-110%)";
+              drawer.style.opacity = "0";
+              icon.className = "fas fa-bars";
+            });
+          });
+        }
+
+        function initSmoothScroll() {
+          document
+            .querySelectorAll(".nav-link[data-target]")
+            .forEach((link) => {
+              link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = document.getElementById(link.dataset.target);
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              });
+            });
+        }
+
+        function initActiveNav() {
+          const sections = document.querySelectorAll("section[id]");
+          const navLinks = document.querySelectorAll(".nav-link[data-target]");
+          window.addEventListener("scroll", () => {
+            let currentId = "";
+            sections.forEach((section) => {
+              const rect = section.getBoundingClientRect();
+              if (rect.top <= 150) currentId = section.id;
+            });
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.dataset.target === currentId,
+              );
+            });
+          });
+        }
+
+        function initBackToTop() {
+          const btn = document.getElementById("backToTop");
+          window.addEventListener("scroll", () => {
+            btn.classList.toggle("visible", window.scrollY > 400);
+          });
+          btn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        function initContactForm() {
+          const form = document.getElementById("contactForm");
+          const successEl = document.getElementById("formSuccess");
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("formName").value.trim();
+            const phone = document.getElementById("formPhone").value.trim();
+            const email = document.getElementById("formEmail").value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let valid = true;
+
+            if (!name) {
+              document.getElementById("nameError").classList.remove("hidden");
+              valid = false;
+            } else {
+              document.getElementById("nameError").classList.add("hidden");
+            }
+            if (!phone) {
+              document.getElementById("phoneError").classList.remove("hidden");
+              valid = false;
+            } else {
+              document.getElementById("phoneError").classList.add("hidden");
+            }
+            if (!email || !emailRegex.test(email)) {
+              document.getElementById("emailError").classList.remove("hidden");
+              valid = false;
+            } else {
+              document.getElementById("emailError").classList.add("hidden");
+            }
+
+            if (valid) {
+              const formData = new FormData(form);
+              const data = {};
+              formData.forEach((value, key) => { data[key] = value; });
+              fetch("https://formsubmit.co/ajax/jjsofadecoraters@gmail.com", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              })
+                .then((res) => res.json())
+                .then(() => {
+                  successEl.classList.remove("hidden");
+                  form.reset();
+                  setTimeout(() => successEl.classList.add("hidden"), 5000);
+                })
+                .catch(() => {
+                  alert("Something went wrong. Please try again or email us directly.");
+                });
+            }
+          });
+
+          ["formName", "formPhone", "formEmail"].forEach((id) => {
+            document.getElementById(id).addEventListener("input", () => {
+              document
+                .getElementById(id.replace("form", "").toLowerCase() + "Error")
+                .classList.add("hidden");
+            });
+          });
+        }
+
+        let observer = null;
+        function observeFadeIns() {
+          if (observer) observer.disconnect();
+          observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          );
+          document
+            .querySelectorAll(".fade-in:not(.visible)")
+            .forEach((el) => observer.observe(el));
+        }
+
+        function initPreloader() {
+          const preloader = document.getElementById("preloader");
+          setTimeout(() => preloader.classList.add("hidden"), 1500);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          buildStyles();
+          initNavbar();
+          initHamburger();
+          initSmoothScroll();
+          initActiveNav();
+          initBackToTop();
+          initContactForm();
+          observeFadeIns();
+          initPreloader();
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JJ Sofa Decoraters — Quality Sofas & Curtains Since 1998</title>
+    <meta
+      name="description"
+      content="JJ Sofa Decoraters is a trusted sofa and curtain manufacturer offering handcrafted, custom designs with 5-year warranty and pan-India delivery."
+    />
+    <meta
+      name="keywords"
+      content="sofa, curtain, luxury sofa, modular sofa, L-shape sofa, recliner sofa, sofa manufacturer, custom furniture, curtain decor, India"
+    />
+    <meta
+      property="og:title"
+      content="JJ Sofa Decoraters — Quality Sofas & Curtains Since 1998"
+    />
+    <meta
+      property="og:description"
+      content="Your Home, Our Craft. Since 1998."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛋️</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #faf7f2;
+        color: #1c1c1e;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+      }
+      ::selection {
+        background: #c9a84c;
+        color: #fff;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #faf7f2;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c9a84c;
+        border-radius: 4px;
+      }
+
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #faf7f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.6s ease,
+          visibility 0.6s ease;
+      }
+      .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .preloader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid #c9a84c;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .navbar {
+        transition:
+          background 0.4s ease,
+          backdrop-filter 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+      .navbar.scrolled {
+        background: rgba(250, 247, 242, 0.85);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-link {
+        position: relative;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #c9a84c;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .nav-link.active {
+        color: #c9a84c;
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(250, 247, 242, 0.97);
+        backdrop-filter: blur(20px);
+        transform: translateY(-110%);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 40;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      }
+      .mobile-drawer.open {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        line-height: 1.05;
+      }
+      .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.75rem);
+      }
+      .section-subtitle {
+        font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      }
+
+      .float-anim {
+        animation: floaty 4s ease-in-out infinite;
+      }
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-18px);
+        }
+      }
+
+      .product-card {
+        transition:
+          transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.4s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      }
+      .product-img-wrap {
+        overflow: hidden;
+        border-radius: 16px 16px 0 0;
+      }
+      .product-img-wrap img {
+        transition: transform 0.6s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .product-card:hover .product-img-wrap img {
+        transform: scale(1.08);
+      }
+
+      #three-canvas canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+      }
+
+      .filter-btn {
+        padding: 8px 22px;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: 1.5px solid #c9a84c;
+        color: #1c1c1e;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: #c9a84c;
+        color: #fff;
+        border-color: #c9a84c;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .testimonial-card {
+        min-width: 310px;
+        flex-shrink: 0;
+      }
+
+      .step-line::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        left: 60px;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, #c9a84c, #c9a84c44);
+        z-index: 0;
+      }
+      .step-line:last-child::before {
+        display: none;
+      }
+
+      .gallery-item {
+        overflow: hidden;
+        border-radius: 16px;
+        cursor: pointer;
+        position: relative;
+      }
+      .gallery-item img {
+        transition: transform 0.6s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        color: #fff;
+        font-size: 2rem;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 50;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #25d366;
+        color: #fff;
+        font-size: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+      .whatsapp-float .pulse {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          infinite;
+      }
+      @keyframes pulse-ring {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+        }
+        70% {
+          box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 90px;
+        right: 24px;
+        z-index: 50;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #1c1c1e;
+        color: #faf7f2;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .back-to-top:hover {
+        background: #c9a84c;
+        transform: translateY(-3px);
+      }
+
+      .btn-primary {
+        display: inline-block;
+        padding: 14px 34px;
+        border-radius: 9999px;
+        background: #c9a84c;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border: 2px solid #c9a84c;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: #b5942e;
+        border-color: #b5942e;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+      }
+
+      .btn-secondary {
+        display: inline-block;
+        padding: 14px 34px;
+        border-radius: 9999px;
+        background: transparent;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+      .btn-secondary:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .btn-gold-outline {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: 9999px;
+        background: transparent;
+        color: #c9a84c;
+        font-weight: 600;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        border: 2px solid #c9a84c;
+        cursor: pointer;
+      }
+      .btn-gold-outline:hover {
+        background: #c9a84c;
+        color: #fff;
+      }
+
+      .btn-dark {
+        display: inline-block;
+        padding: 14px 34px;
+        border-radius: 9999px;
+        background: #1c1c1e;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border: 2px solid #1c1c1e;
+        cursor: pointer;
+      }
+      .btn-dark:hover {
+        background: #333;
+        border-color: #333;
+        transform: translateY(-2px);
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1.5px solid #e0dcd3;
+        background: #fff;
+        font-size: 0.95rem;
+        transition: border 0.3s ease;
+        outline: none;
+        font-family: "Inter", sans-serif;
+      }
+      .form-input:focus {
+        border-color: #c9a84c;
+        box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+      }
+
+      .testimonial-track {
+        display: flex;
+        gap: 24px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .star {
+        color: #e8b84b;
+      }
+
+      .divider-gold {
+        width: 60px;
+        height: 3px;
+        background: #c9a84c;
+        border-radius: 4px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 640px) {
+        .testimonial-card {
+          min-width: 280px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preloader" id="preloader">
+      <div class="preloader-spinner"></div>
+    </div>
+
+    <header class="navbar fixed top-0 left-0 right-0 z-50 py-4" id="navbar">
+      <div
+        class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between"
+      >
+        <a
+          href="#home"
+          class="flex items-center gap-2 text-xl lg:text-2xl font-bold font-serif"
+          style="font-family: &quot;Playfair Display&quot;, serif"
+        >
+          <span style="font-size: 1.4em">🛋️</span>
+          <span class="tracking-tight"
+            >JJ <span style="color: #c9a84c">Sofa Decoraters</span></span
+          >
+        </a>
+        <nav class="hidden lg:flex items-center gap-8">
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="home"
+            >Home</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="about"
+            >About</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="products"
+            >Products</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="why-us"
+            >Why Us</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="testimonials"
+            >Testimonials</a
+          >
+          <a
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            data-target="contact"
+            >Contact</a
+          >
+          <a
+            href="curtains.html"
+            class="nav-link text-sm font-medium uppercase tracking-wider"
+            >Curtains</a
+          >
+        </nav>
+        <button
+          class="lg:hidden text-2xl p-1 focus:outline-none"
+          id="hamburger"
+          aria-label="Toggle menu"
+        >
+          <i class="fas fa-bars" id="hamburger-icon"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-drawer lg:hidden shadow-xl" id="mobileDrawer">
+      <nav class="flex flex-col py-6 px-5 gap-5">
+        <a class="nav-link text-base font-medium" data-target="home">Home</a>
+        <a class="nav-link text-base font-medium" data-target="about">About</a>
+        <a class="nav-link text-base font-medium" data-target="products"
+          >Products</a
+        >
+        <a class="nav-link text-base font-medium" data-target="why-us"
+          >Why Us</a
+        >
+        <a class="nav-link text-base font-medium" data-target="testimonials"
+          >Testimonials</a
+        >
+        <a class="nav-link text-base font-medium" data-target="contact"
+          >Contact</a
+        >
+        <a href="curtains.html" class="nav-link text-base font-medium"
+          >Curtains</a
+        >
+      </nav>
+    </div>
+
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center overflow-hidden pt-16"
+      style="
+        background: linear-gradient(
+          135deg,
+          #1a1208 0%,
+          #2c1f14 40%,
+          #3d2b1a 100%
+        );
+      "
+    >
+      <div
+        class="absolute inset-0 opacity-[0.04]"
+        style="
+          background-image: url(&quot;https://www.transparenttextures.com/patterns/dark-mosaic.png&quot;);
+        "
+      ></div>
+      <div
+        class="absolute top-20 left-10 w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-20 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="text-center lg:text-left fade-in visible">
+            <p
+              class="text-yellow-600 font-medium tracking-[0.25em] uppercase text-sm lg:text-base mb-4"
+              style="color: #c9a84c"
+            >
+              Since 1998 — Your Trusted Sofa & Curtain Experts
+            </p>
+            <h1 class="hero-title text-white font-bold leading-tight mb-6">
+              Your Home, <br /><span style="color: #c9a84c">Our Craft</span>.
+              <br />Since 1998.
+            </h1>
+            <p
+              class="text-gray-300 text-base lg:text-lg max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed"
+            >
+              JJ Sofa Decoraters — crafting quality sofas and curtains with
+              solid wood, premium fabrics, and generations of artistry. Your
+              dream home starts here.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <a href="#products" class="btn-primary">
+                <i class="fas fa-couch mr-2"></i>Explore Collection
+              </a>
+              <a href="#contact" class="btn-secondary">
+                <i class="fas fa-phone-alt mr-2"></i>Get a Quote
+              </a>
+            </div>
+            <div
+              class="flex items-center gap-6 mt-10 justify-center lg:justify-start text-gray-400 text-sm"
+            >
+              <span
+                ><i class="fas fa-star text-yellow-500 mr-1"></i> 4.9/5
+                Rating</span
+              >
+              <span
+                ><i class="fas fa-shield-alt mr-1" style="color: #c9a84c"></i> 5
+                Yr Warranty</span
+              >
+              <span
+                ><i class="fas fa-gem mr-1" style="color: #c9a84c"></i> Premium
+                Quality</span
+              >
+            </div>
+          </div>
+
+          <div class="hidden lg:flex justify-center items-center relative">
+            <div class="float-anim relative w-full max-w-lg">
+              <div
+                id="three-canvas"
+                class="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
+                style="
+                  background: linear-gradient(145deg, #2c1f14, #1a1208);
+                  border: 1px solid rgba(201, 168, 76, 0.15);
+                "
+              ></div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-6 text-center"
+                style="
+                  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+                  pointer-events: none;
+                "
+              >
+                <p class="text-white font-serif text-lg font-semibold">
+                  JJ Signature Sofa
+                </p>
+                <p style="color: #c9a84c" class="font-semibold">
+                  Starting ₹24,999
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-6 lg:py-8"
+      style="
+        background: #1a1208;
+        border-top: 1px solid rgba(201, 168, 76, 0.15);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      "
+    >
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-gem text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">Premium Materials</p>
+              <p class="text-gray-400 text-xs">Finest fabrics & wood</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-pencil-ruler text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">Custom Orders</p>
+              <p class="text-gray-400 text-xs">Your size, your fabric</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-shield-alt text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">5 Year Warranty</p>
+              <p class="text-gray-400 text-xs">Structural guarantee</p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-3 text-white justify-center lg:justify-start"
+          >
+            <i class="fas fa-tag text-xl" style="color: #c9a84c"></i>
+            <div>
+              <p class="font-semibold text-sm">Best Prices</p>
+              <p class="text-gray-400 text-xs">Factory direct pricing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div class="fade-in">
+            <div class="rounded-3xl overflow-hidden shadow-xl relative">
+              <img
+                src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?w=600&q=80"
+                alt="Craftsman at work"
+                class="w-full h-80 lg:h-[500px] object-cover"
+              />
+              <div
+                class="absolute inset-0"
+                style="
+                  background: linear-gradient(
+                    to top,
+                    rgba(26, 18, 8, 0.3),
+                    transparent
+                  );
+                "
+              ></div>
+              <div
+                class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 text-center"
+              >
+                <p class="font-serif text-lg font-semibold text-gray-900">
+                  25+ Years of Artisan Excellence
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in">
+            <p
+              class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+              style="color: #c9a84c"
+            >
+              Our Story
+            </p>
+            <h2 class="section-title font-bold text-gray-900 mb-6">
+              Where Craftsmanship <br />Meets Your Home
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              For over 25 years, JJ Sofa Decoraters has been transforming homes
+              across India with handcrafted sofas and custom curtains that blend
+              timeless quality with modern design.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              At JJ Sofa Decoraters, we believe your home deserves the best.
+              Since 1998, we've been crafting sofas and curtains that blend
+              durability with elegance — every frame carved from solid hardwood,
+              every stitch sewn with care by skilled artisans.
+            </p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-1" style="color: #c9a84c"></i
+                ><span class="text-gray-600"
+                  >Handcrafted by master artisans with 10+ years of
+                  experience</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-1" style="color: #c9a84c"></i
+                ><span class="text-gray-600"
+                  >100% solid wood frames — no plywood, no particle board</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-1" style="color: #c9a84c"></i
+                ><span class="text-gray-600"
+                  >Premium Italian and Indian upholstery fabrics to choose
+                  from</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle mt-1" style="color: #c9a84c"></i
+                ><span class="text-gray-600"
+                  >Eco-friendly manufacturing with sustainable practices</span
+                >
+              </li>
+            </ul>
+            <div class="grid grid-cols-3 gap-4 py-6 border-t border-gray-200">
+              <div class="text-center">
+                <p
+                  class="text-2xl lg:text-3xl font-bold font-serif"
+                  style="color: #c9a84c"
+                >
+                  2000+
+                </p>
+                <p class="text-gray-500 text-sm">Happy Customers</p>
+              </div>
+              <div class="text-center border-x border-gray-200">
+                <p
+                  class="text-2xl lg:text-3xl font-bold font-serif"
+                  style="color: #c9a84c"
+                >
+                  25+
+                </p>
+                <p class="text-gray-500 text-sm">Years Experience</p>
+              </div>
+              <div class="text-center">
+                <p
+                  class="text-2xl lg:text-3xl font-bold font-serif"
+                  style="color: #c9a84c"
+                >
+                  50+
+                </p>
+                <p class="text-gray-500 text-sm">Unique Designs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="py-16 lg:py-24" style="background: #f5f0e8">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Our Collection
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            Designs That Elevate <br class="hidden sm:block" />Your Space
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+
+        <div
+          class="flex flex-wrap justify-center gap-3 mb-10 fade-in"
+          id="filterContainer"
+        >
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="living-room">
+            Living Room
+          </button>
+          <button class="filter-btn" data-filter="l-shape">L-Shape</button>
+          <button class="filter-btn" data-filter="recliner">Recliner</button>
+          <button class="filter-btn" data-filter="sleeper">Sleeper</button>
+        </div>
+
+        <div
+          class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          id="productGrid"
+        ></div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24" style="background: #1a1208">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Materials & Craftsmanship
+          </p>
+          <h2 class="section-title font-bold text-white mb-4">
+            Built to Last a Lifetime
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div
+            class="fade-in bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10 hover:border-yellow-700/30 transition-all duration-300"
+            style="border-color: rgba(201, 168, 76, 0.15)"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-tshirt text-2xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 font-serif">
+              Premium Fabric
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Curated from Italy and India — linen, velvet, leather, and
+              performance fabrics that are stain-resistant, breathable, and
+              incredibly soft.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10 hover:border-yellow-700/30 transition-all duration-300"
+            style="border-color: rgba(201, 168, 76, 0.15)"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-tree text-2xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 font-serif">
+              Solid Wood Frame
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Kiln-dried sheesham and mango hardwood frames, hand-joined and
+              reinforced for decades of daily use without sagging or creaking.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white/5 backdrop-blur-sm rounded-2xl p-8 text-center border border-white/10 sm:col-span-2 lg:col-span-1 hover:border-yellow-700/30 transition-all duration-300"
+            style="border-color: rgba(201, 168, 76, 0.15)"
+          >
+            <div
+              class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-layer-group text-2xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 font-serif">
+              High Density Foam
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Multi-layer cushioning with high-resilience foam core, wrapped in
+              memory fiber for the perfect balance of support and sink-in
+              comfort.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-us" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Why Choose Us
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            The JJ Sofa <br class="hidden sm:block" />Difference
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i
+                class="fas fa-ruler-combined text-xl"
+                style="color: #c9a84c"
+              ></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Custom Sizes</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Any size, any shape, any fabric — we build your perfect fit.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-home text-xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Home Delivery</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              White-glove delivery to your doorstep across India.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-tshirt text-xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Custom Curtains</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Bespoke curtains, blinds, and drapes tailored to your space.
+            </p>
+          </div>
+          <div
+            class="fade-in bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+          >
+            <div
+              class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+              style="background: rgba(201, 168, 76, 0.12)"
+            >
+              <i class="fas fa-headset text-xl" style="color: #c9a84c"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">After-Sales Support</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Dedicated support team, spare parts, and re-upholstery services.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24" style="background: #f5f0e8">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            How It Works
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            From Dream to <br class="hidden sm:block" />Doorstep
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div
+          class="flex gap-6 lg:gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+          id="processSteps"
+        >
+          <div
+            class="step-line relative flex-shrink-0 w-56 lg:w-72 snap-start fade-in"
+          >
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg text-center relative z-10"
+            >
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-sm"
+                style="background: #c9a84c; color: #fff"
+              >
+                01
+              </div>
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                style="background: rgba(201, 168, 76, 0.1)"
+              >
+                <i class="fas fa-couch text-xl" style="color: #c9a84c"></i>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Choose Design</h3>
+              <p class="text-gray-500 text-xs">
+                Browse our collection of 50+ premium designs.
+              </p>
+            </div>
+          </div>
+          <div
+            class="step-line relative flex-shrink-0 w-56 lg:w-72 snap-start fade-in"
+          >
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg text-center relative z-10"
+            >
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-sm"
+                style="background: #c9a84c; color: #fff"
+              >
+                02
+              </div>
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                style="background: rgba(201, 168, 76, 0.1)"
+              >
+                <i class="fas fa-palette text-xl" style="color: #c9a84c"></i>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Customize</h3>
+              <p class="text-gray-500 text-xs">
+                Pick your size, fabric, color, and leg style.
+              </p>
+            </div>
+          </div>
+          <div
+            class="step-line relative flex-shrink-0 w-56 lg:w-72 snap-start fade-in"
+          >
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg text-center relative z-10"
+            >
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-sm"
+                style="background: #c9a84c; color: #fff"
+              >
+                03
+              </div>
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                style="background: rgba(201, 168, 76, 0.1)"
+              >
+                <i class="fas fa-hammer text-xl" style="color: #c9a84c"></i>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">We Craft</h3>
+              <p class="text-gray-500 text-xs">
+                Our artisans handcraft your sofa with precision.
+              </p>
+            </div>
+          </div>
+          <div
+            class="step-line relative flex-shrink-0 w-56 lg:w-72 snap-start fade-in"
+          >
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg text-center relative z-10"
+            >
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-sm"
+                style="background: #c9a84c; color: #fff"
+              >
+                04
+              </div>
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                style="background: rgba(201, 168, 76, 0.1)"
+              >
+                <i class="fas fa-truck text-xl" style="color: #c9a84c"></i>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-1">Deliver to Door</h3>
+              <p class="text-gray-500 text-xs">
+                White-glove delivery & assembly included.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Testimonials
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            What Our Customers Say
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="relative overflow-hidden" id="testimonialWrapper">
+          <div class="testimonial-track" id="testimonialTrack"></div>
+        </div>
+        <div class="flex justify-center gap-2 mt-6" id="testimonialDots"></div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-24" style="background: #f5f0e8">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Gallery
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            Our Work Speaks
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80"
+              alt="Modern curtain design"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=400&q=80"
+              alt="Bedroom curtains"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=400&q=80"
+              alt="Luxury drapes"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=400&q=80"
+              alt="Window treatments"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item fade-in aspect-[4/3]">
+            <img
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80"
+              alt="Cosy room with curtains"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-16 lg:py-24 relative overflow-hidden"
+      style="
+        background: linear-gradient(
+          135deg,
+          #1a1208 0%,
+          #2c1f14 50%,
+          #3d2b1a 100%
+        );
+      "
+    >
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="
+          background-image: url(&quot;https://www.transparenttextures.com/patterns/dark-mosaic.png&quot;);
+        "
+      ></div>
+      <div class="max-w-4xl mx-auto px-5 lg:px-8 text-center relative z-10">
+        <div class="fade-in">
+          <h2 class="section-title font-bold text-white mb-4">
+            Ready to Furnish Your <br />Dream Living Room?
+          </h2>
+          <p class="text-gray-300 mb-8 max-w-lg mx-auto">
+            Get a free consultation and quote. Our design experts will help you
+            find the perfect sofas and curtains for your space.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://wa.me/919344667546"
+              target="_blank"
+              class="btn-primary"
+              style="background: #25d366; border-color: #25d366"
+            >
+              <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+            </a>
+            <a href="tel:+919344667546" class="btn-secondary">
+              <i class="fas fa-phone-alt mr-2"></i>Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12 fade-in">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] mb-2"
+            style="color: #c9a84c"
+          >
+            Get In Touch
+          </p>
+          <h2 class="section-title font-bold text-gray-900 mb-4">
+            Let's Build Your <br class="hidden sm:block" />Perfect Space
+          </h2>
+          <div class="divider-gold"></div>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="fade-in space-y-8">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-map-marker-alt" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Our Showroom</h4>
+                <p class="text-gray-500 text-sm">
+                  Nanjundapuram, Ramanathapuram<br />Coimbatore — 641045, Tamil
+                  Nadu<br />Straight opposite to BOI Bank
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-phone-alt" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Call Us</h4>
+                <p class="text-gray-500 text-sm">+91 93446 67546</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-envelope" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Email</h4>
+                <p class="text-gray-500 text-sm">jjsofadecorators@gmail.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(201, 168, 76, 0.12)"
+              >
+                <i class="fas fa-clock" style="color: #c9a84c"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Working Hours</h4>
+                <p class="text-gray-500 text-sm">
+                  Mon – Sat: 10:00 AM – 9:00 PM<br />Sunday: Closed
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fade-in">
+            <form
+              class="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border border-gray-100"
+              id="contactForm"
+              novalidate
+            >
+              <input type="hidden" name="_captcha" value="true" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New enquiry from JJ Sofa Decoraters website"
+              />
+              <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                    >Your Name *</label
+                  >
+                  <input
+                    type="text"
+                    class="form-input"
+                    id="formName"
+                    name="name"
+                    placeholder="John Doe"
+                    required
+                  />
+                  <p class="text-red-500 text-xs mt-1 hidden" id="nameError">
+                    Please enter your name
+                  </p>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                    >Phone *</label
+                  >
+                  <input
+                    type="tel"
+                    class="form-input"
+                    id="formPhone"
+                    name="phone"
+                    placeholder="+91 93446 67546"
+                    required
+                  />
+                  <p class="text-red-500 text-xs mt-1 hidden" id="phoneError">
+                    Please enter your phone number
+                  </p>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                  >Email *</label
+                >
+                  <input
+                    type="email"
+                    class="form-input"
+                    id="formEmail"
+                    name="email"
+                    placeholder="john@example.com"
+                    required
+                  />
+                <p class="text-red-500 text-xs mt-1 hidden" id="emailError">
+                  Please enter a valid email
+                </p>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                  >I'm Interested In</label
+                >
+                <select class="form-input" id="formInterest" name="interest">
+                  <option value="">Select a category</option>
+                  <option>Living Room Sofas</option>
+                  <option>L-Shape / Corner Sofas</option>
+                  <option>Recliner Sofas</option>
+                  <option>Sleeper / Sofa Beds</option>
+                  <option>Custom Curtains & Drapes</option>
+                  <option>Blinds & Window Coverings</option>
+                </select>
+              </div>
+              <div class="mb-5">
+                <label class="block text-sm font-medium text-gray-700 mb-1.5"
+                  >Message</label
+                >
+                  <textarea
+                    class="form-input"
+                    id="formMessage"
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us about your ideal sofa..."
+                  ></textarea>
+              </div>
+              <button type="submit" class="btn-dark w-full text-center">
+                <i class="fas fa-paper-plane mr-2"></i>Send Enquiry
+              </button>
+              <p
+                class="text-green-600 text-sm mt-3 text-center hidden"
+                id="formSuccess"
+              >
+                <i class="fas fa-check-circle mr-1"></i> Thank you! We'll get
+                back to you within 24 hours.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="py-12 lg:py-16"
+      style="
+        background: #1a1208;
+        border-top: 1px solid rgba(201, 168, 76, 0.12);
+      "
+    >
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div>
+            <div
+              class="flex items-center gap-2 text-xl font-bold text-white mb-3 font-serif"
+            >
+              <span>🛋️</span>
+              <span
+                >JJ <span style="color: #c9a84c">Sofa Decoraters</span></span
+              >
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Your Home, Our Craft. Since 1998 — premium handcrafted sofas and
+              curtains made in India with love and generations of artistry.
+            </p>
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-4 font-serif">Quick Links</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="home"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="about"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#products"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="products"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="testimonials"
+                  >Testimonials</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors nav-link"
+                  data-target="contact"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a
+                  href="curtains.html"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Curtains</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-4 font-serif">Categories</h4>
+            <ul class="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#products"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Living Room Sofas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#products"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >L-Shape Sofas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#products"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Recliner Sofas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#products"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Sleeper Sofas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#products"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Custom Sofas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="curtains.html"
+                  class="text-gray-400 hover:text-yellow-600 transition-colors"
+                  >Curtains & Drapes</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-4 font-serif">Contact Info</h4>
+            <ul class="space-y-2.5 text-sm text-gray-400">
+              <li>
+                <i
+                  class="fas fa-map-marker-alt mr-2"
+                  style="color: #c9a84c"
+                ></i>
+                Coimbatore, Tamil Nadu
+              </li>
+              <li>
+                <i class="fas fa-phone-alt mr-2" style="color: #c9a84c"></i> +91
+                93446 67546
+              </li>
+              <li>
+                <i class="fas fa-envelope mr-2" style="color: #c9a84c"></i>
+                jjsofadecoraters@gmail.com
+              </li>
+              <li>
+                <i class="fas fa-clock mr-2" style="color: #c9a84c"></i>
+                Mon–Sat: 10AM–8PM
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+        >
+          <p class="text-gray-500 text-sm">
+            &copy; 2026 JJ Sofa Decoraters. All rights reserved.
+          </p>
+          <p class="text-gray-500 text-sm">Made with ❤️ in India</p>
+        </div>
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/919344667546"
+      target="_blank"
+      class="whatsapp-float"
+      aria-label="Chat on WhatsApp"
+    >
+      <span class="pulse"></span>
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+      (function () {
+        const products = [
+          {
+            name: "Royal Chesterfield",
+            desc: "Classic tufted design with rolled arms and premium velvet upholstery.",
+            price: "₹24,999",
+            img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80",
+            cat: "living-room",
+          },
+          {
+            name: "Modular L-Shape",
+            desc: "Versatile corner sofa with chaise lounge, perfect for family gatherings.",
+            price: "₹39,999",
+            img: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=400&q=80",
+            cat: "l-shape",
+          },
+          {
+            name: "Cloud Recliner",
+            desc: "Electric recliner with memory-foam cushioning and USB charging port.",
+            price: "₹32,499",
+            img: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80",
+            cat: "recliner",
+          },
+          {
+            name: "Sleeper Plus",
+            desc: "Convertible sofa bed with hidden storage, ideal for guest rooms.",
+            price: "₹28,999",
+            img: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&q=80",
+            cat: "sleeper",
+          },
+          {
+            name: "Velvet Grande",
+            desc: "Grand three-seater with deep button tufting and gold-accent legs.",
+            price: "₹34,999",
+            img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80",
+            cat: "living-room",
+          },
+          {
+            name: "Ergo Recliner Set",
+            desc: "Pair of manual recliners with swivel base and built-in cup holders.",
+            price: "₹36,999",
+            img: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&q=80",
+            cat: "recliner",
+          },
+          {
+            name: "Nova Sleeper Bed",
+            desc: "Stylish daybed with pull-out trundle and memory foam mattress.",
+            price: "₹26,499",
+            img: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=400&q=80",
+            cat: "sleeper",
+          },
+          {
+            name: "Urban 3-Seater",
+            desc: "Minimalist sofa with solid wood frame, linen fabric, and tapered legs.",
+            price: "₹22,499",
+            img: "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?w=400&q=80",
+            cat: "living-room",
+          },
+        ];
+
+        const testimonials = [
+          {
+            name: "Priya Sharma",
+            text: "Absolutely in love with our new L-shape sofa! The quality is incredible and the team helped us customize the exact fabric we wanted.",
+            rating: 5,
+          },
+          {
+            name: "Rahul Verma",
+            text: "From design to delivery, everything was seamless. The sofa looks even better than the pictures. Highly recommend JJ Sofa Decoraters!",
+            rating: 5,
+          },
+          {
+            name: "Ananya Gupta",
+            text: "We ordered a custom-sized recliner set for our small apartment. Perfect fit, superb craftsmanship. Thank you, team!",
+            rating: 5,
+          },
+          {
+            name: "Vikram Patel",
+            text: "Five years and our Chesterfield still looks brand new. The after-sales support is fantastic. Truly built to last.",
+            rating: 5,
+          },
+        ];
+
+        function buildProducts(filter = "all") {
+          const grid = document.getElementById("productGrid");
+          const filtered =
+            filter === "all"
+              ? products
+              : products.filter((p) => p.cat === filter);
+          grid.innerHTML = filtered
+            .map(
+              (p) => `
+      <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 fade-in">
+        <div class="product-img-wrap aspect-[4/3] relative">
+          <img src="${p.img}" alt="${p.name}" loading="lazy" />
+          <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-bold" style="color:#C9A84C;">${p.price}</div>
+        </div>
+        <div class="p-5 lg:p-6">
+          <h3 class="font-bold text-gray-900 text-lg mb-1.5">${p.name}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">${p.desc}</p>
+          <div class="flex gap-2">
+            <button class="btn-gold-outline text-xs flex-1 text-center"><i class="fas fa-eye mr-1"></i>View Details</button>
+            <a href="https://wa.me/919344667546?text=Hi!%20I'm%20interested%20in%20the%20${encodeURIComponent(p.name)}" target="_blank" class="btn-gold-outline text-xs flex-1 text-center" style="background:#C9A84C;color:#fff;"><i class="fab fa-whatsapp mr-1"></i>Enquire</a>
+          </div>
+        </div>
+      </div>
+    `,
+            )
+            .join("");
+          setTimeout(() => observeFadeIns(), 50);
+        }
+
+        function buildTestimonials() {
+          const track = document.getElementById("testimonialTrack");
+          const dots = document.getElementById("testimonialDots");
+          const items = testimonials
+            .map((t) => {
+              const initials = t.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("");
+              const stars = Array.from(
+                { length: t.rating },
+                () => '<i class="fas fa-star star"></i>',
+              ).join("");
+              return `<div class="testimonial-card bg-white rounded-2xl p-6 lg:p-8 shadow-lg border border-gray-100">
+        <div class="flex items-center gap-1 mb-3">${stars}</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">"${t.text}"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:#C9A84C;">${initials}</div>
+          <div>
+            <p class="font-bold text-gray-900 text-sm">${t.name}</p>
+            <p class="text-gray-400 text-xs">Verified Customer</p>
+          </div>
+        </div>
+      </div>`;
+            })
+            .join("");
+          track.innerHTML = items;
+          dots.innerHTML = testimonials
+            .map(
+              (_, i) =>
+                `<button class="w-2.5 h-2.5 rounded-full transition-all duration-300 testimonial-dot ${i === 0 ? "bg-yellow-700 w-6" : "bg-gray-300"}" data-index="${i}"></button>`,
+            )
+            .join("");
+
+          let current = 0;
+          const total = testimonials.length;
+          let interval = setInterval(advance, 4000);
+          const wrapper = document.getElementById("testimonialWrapper");
+
+          wrapper.addEventListener("mouseenter", () => clearInterval(interval));
+          wrapper.addEventListener("mouseleave", () => {
+            interval = setInterval(advance, 4000);
+          });
+
+          function advance() {
+            current = (current + 1) % total;
+            updateCarousel();
+          }
+
+          dots.addEventListener("click", (e) => {
+            if (e.target.classList.contains("testimonial-dot")) {
+              current = parseInt(e.target.dataset.index);
+              updateCarousel();
+              clearInterval(interval);
+              interval = setInterval(advance, 4000);
+            }
+          });
+
+          function updateCarousel() {
+            const cardWidth =
+              track.querySelector(".testimonial-card")?.offsetWidth || 310;
+            const gap = 24;
+            const offset = current * (cardWidth + gap);
+            track.style.transform = `translateX(-${offset}px)`;
+            document.querySelectorAll(".testimonial-dot").forEach((dot, i) => {
+              dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 testimonial-dot ${i === current ? "bg-yellow-700 w-6" : "bg-gray-300"}`;
+            });
+          }
+
+          window.addEventListener("resize", updateCarousel);
+        }
+
+        function initFilter() {
+          const container = document.getElementById("filterContainer");
+          container.addEventListener("click", (e) => {
+            if (e.target.classList.contains("filter-btn")) {
+              container
+                .querySelectorAll(".filter-btn")
+                .forEach((b) => b.classList.remove("active"));
+              e.target.classList.add("active");
+              buildProducts(e.target.dataset.filter);
+            }
+          });
+        }
+
+        function initNavbar() {
+          const navbar = document.getElementById("navbar");
+          let ticking = false;
+          window.addEventListener("scroll", () => {
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                navbar.classList.toggle("scrolled", window.scrollY > 50);
+                ticking = false;
+              });
+              ticking = true;
+            }
+          });
+        }
+
+        function initHamburger() {
+          const btn = document.getElementById("hamburger");
+          const drawer = document.getElementById("mobileDrawer");
+          const icon = document.getElementById("hamburger-icon");
+          btn.addEventListener("click", () => {
+            drawer.classList.toggle("open");
+            icon.className = drawer.classList.contains("open")
+              ? "fas fa-times"
+              : "fas fa-bars";
+          });
+          drawer.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+              drawer.classList.remove("open");
+              icon.className = "fas fa-bars";
+            });
+          });
+        }
+
+        function initSmoothScroll() {
+          document
+            .querySelectorAll(".nav-link[data-target]")
+            .forEach((link) => {
+              link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = document.getElementById(link.dataset.target);
+                if (target) {
+                  target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              });
+            });
+        }
+
+        function initActiveNav() {
+          const sections = document.querySelectorAll("section[id]");
+          const navLinks = document.querySelectorAll(".nav-link[data-target]");
+          window.addEventListener("scroll", () => {
+            let currentId = "";
+            sections.forEach((section) => {
+              const rect = section.getBoundingClientRect();
+              if (rect.top <= 150) currentId = section.id;
+            });
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.dataset.target === currentId,
+              );
+            });
+          });
+        }
+
+        function initBackToTop() {
+          const btn = document.getElementById("backToTop");
+          window.addEventListener("scroll", () => {
+            btn.classList.toggle("visible", window.scrollY > 400);
+          });
+          btn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        function initContactForm() {
+          const form = document.getElementById("contactForm");
+          const successEl = document.getElementById("formSuccess");
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("formName").value.trim();
+            const phone = document.getElementById("formPhone").value.trim();
+            const email = document.getElementById("formEmail").value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let valid = true;
+
+            if (!name) {
+              document.getElementById("nameError").classList.remove("hidden");
+              valid = false;
+            } else {
+              document.getElementById("nameError").classList.add("hidden");
+            }
+            if (!phone) {
+              document.getElementById("phoneError").classList.remove("hidden");
+              valid = false;
+            } else {
+              document.getElementById("phoneError").classList.add("hidden");
+            }
+            if (!email || !emailRegex.test(email)) {
+              document.getElementById("emailError").classList.remove("hidden");
+              valid = false;
+            } else {
+              document.getElementById("emailError").classList.add("hidden");
+            }
+
+            if (valid) {
+              const formData = new FormData(form);
+              const data = {};
+              formData.forEach((value, key) => { data[key] = value; });
+              fetch("https://formsubmit.co/ajax/jjsofadecoraters@gmail.com", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              })
+                .then((res) => res.json())
+                .then(() => {
+                  successEl.classList.remove("hidden");
+                  form.reset();
+                  setTimeout(() => successEl.classList.add("hidden"), 5000);
+                })
+                .catch(() => {
+                  alert("Something went wrong. Please try again or email us directly.");
+                });
+            }
+          });
+
+          document.getElementById("formName").addEventListener("input", () => {
+            document.getElementById("nameError").classList.add("hidden");
+          });
+          document.getElementById("formPhone").addEventListener("input", () => {
+            document.getElementById("phoneError").classList.add("hidden");
+          });
+          document.getElementById("formEmail").addEventListener("input", () => {
+            document.getElementById("emailError").classList.add("hidden");
+          });
+        }
+
+        let observer = null;
+        function observeFadeIns() {
+          if (observer) observer.disconnect();
+          observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          );
+          document
+            .querySelectorAll(".fade-in:not(.visible)")
+            .forEach((el) => observer.observe(el));
+        }
+
+        function initPreloader() {
+          const preloader = document.getElementById("preloader");
+          setTimeout(() => preloader.classList.add("hidden"), 1500);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          buildProducts("all");
+          buildTestimonials();
+          initFilter();
+          initNavbar();
+          initHamburger();
+          initSmoothScroll();
+          initActiveNav();
+          initBackToTop();
+          initContactForm();
+          observeFadeIns();
+          initPreloader();
+        });
+      })();
+    </script>
+
+    <script type="module">
+      import * as THREE from "three";
+
+      function init3DSofa() {
+        const container = document.getElementById("three-canvas");
+        if (!container) return;
+
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+
+        const scene = new THREE.Scene();
+        scene.background = null;
+
+        const camera = new THREE.PerspectiveCamera(28, w / h, 0.1, 100);
+        camera.position.set(4, 2.5, 6);
+        camera.lookAt(0, 0.4, 0);
+
+        const renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
+        renderer.setSize(w, h);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+        container.appendChild(renderer.domElement);
+
+        const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambient);
+
+        const keyLight = new THREE.DirectionalLight(0xffeedd, 2.2);
+        keyLight.position.set(4, 6, 4);
+        keyLight.castShadow = true;
+        keyLight.shadow.mapSize.width = 1024;
+        keyLight.shadow.mapSize.height = 1024;
+        scene.add(keyLight);
+
+        const fillLight = new THREE.DirectionalLight(0x4488ff, 0.6);
+        fillLight.position.set(-3, 2, -3);
+        scene.add(fillLight);
+
+        const rimLight = new THREE.DirectionalLight(0xffcc88, 1.0);
+        rimLight.position.set(-2, 3, 5);
+        scene.add(rimLight);
+
+        const accentLight = new THREE.PointLight(0xc9a84c, 0.8, 8);
+        accentLight.position.set(0, 2, 1.5);
+        scene.add(accentLight);
+
+        const gold = 0xc9a84c;
+        const darkWood = 0x2c1f14;
+        const warmBrown = 0x8b6f4e;
+        const cushion = 0xb8946a;
+        const fabric = 0xa67c52;
+        const pillowGold = 0xc9a84c;
+        const pillowDark = 0x6b4c3a;
+
+        function mat(color, roughness = 0.6, metalness = 0.05) {
+          return new THREE.MeshStandardMaterial({
+            color,
+            roughness,
+            metalness,
+          });
+        }
+
+        // Base platform
+        const base = new THREE.Mesh(
+          new THREE.BoxGeometry(2.8, 0.12, 1.6),
+          mat(darkWood, 0.8, 0.1),
+        );
+        base.position.set(0, 0.06, 0);
+        base.castShadow = true;
+        base.receiveShadow = true;
+        scene.add(base);
+
+        // Legs
+        const legGeo = new THREE.CylinderGeometry(0.06, 0.07, 0.25, 8);
+        const legMat = mat(0x1a1208, 0.9, 0.3);
+        const legPositions = [
+          [-1.2, 0.185, -0.65],
+          [1.2, 0.185, -0.65],
+          [-1.2, 0.185, 0.65],
+          [1.2, 0.185, 0.65],
+        ];
+        legPositions.forEach((pos) => {
+          const leg = new THREE.Mesh(legGeo, legMat);
+          leg.position.set(pos[0], pos[1], pos[2]);
+          leg.castShadow = true;
+          scene.add(leg);
+        });
+
+        // Seat cushion
+        const seat = new THREE.Mesh(
+          new THREE.BoxGeometry(2.4, 0.35, 1.2),
+          mat(cushion, 0.7),
+        );
+        seat.position.set(0, 0.4, 0);
+        seat.castShadow = true;
+        seat.receiveShadow = true;
+        scene.add(seat);
+
+        // Backrest
+        const back = new THREE.Mesh(
+          new THREE.BoxGeometry(2.4, 1.2, 0.3),
+          mat(fabric, 0.65),
+        );
+        back.position.set(0, 0.95, -0.7);
+        back.rotation.x = 0.08;
+        back.castShadow = true;
+        back.receiveShadow = true;
+        scene.add(back);
+
+        // Backrest top roll
+        const roll = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.15, 0.15, 2.4, 12),
+          mat(fabric, 0.65),
+        );
+        roll.rotation.z = Math.PI / 2;
+        roll.position.set(0, 1.48, -0.72);
+        roll.castShadow = true;
+        scene.add(roll);
+
+        // Left armrest
+        const armGeo = new THREE.BoxGeometry(0.25, 0.5, 1.2);
+        const armMat = mat(warmBrown, 0.7);
+        const armL = new THREE.Mesh(armGeo, armMat);
+        armL.position.set(-1.35, 0.38, 0);
+        armL.castShadow = true;
+        armL.receiveShadow = true;
+        scene.add(armL);
+
+        const armR = new THREE.Mesh(armGeo, armMat);
+        armR.position.set(1.35, 0.38, 0);
+        armR.castShadow = true;
+        armR.receiveShadow = true;
+        scene.add(armR);
+
+        // Armrest top caps
+        const capGeo = new THREE.BoxGeometry(0.2, 0.06, 1.0);
+        const capMat = mat(0x3d2b1a, 0.8);
+        const capL = new THREE.Mesh(capGeo, capMat);
+        capL.position.set(-1.35, 0.64, 0);
+        scene.add(capL);
+        const capR = new THREE.Mesh(capGeo, capMat);
+        capR.position.set(1.35, 0.64, 0);
+        scene.add(capR);
+
+        // Decorative pillows
+        const pillowMat1 = mat(pillowGold, 0.5);
+        const pillowMat2 = mat(pillowDark, 0.6);
+        const pillowGeo = new THREE.BoxGeometry(0.5, 0.15, 0.45);
+
+        const p1 = new THREE.Mesh(pillowGeo, pillowMat1);
+        p1.position.set(-0.7, 0.62, 0.6);
+        p1.rotation.x = -0.15;
+        p1.castShadow = true;
+        scene.add(p1);
+
+        const p2 = new THREE.Mesh(pillowGeo, pillowMat2);
+        p2.position.set(0.7, 0.62, 0.6);
+        p2.rotation.x = -0.15;
+        p2.castShadow = true;
+        scene.add(p2);
+
+        // Ground plane shadow catcher
+        const ground = new THREE.Mesh(
+          new THREE.PlaneGeometry(6, 6),
+          new THREE.ShadowMaterial({ opacity: 0.4 }),
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.02;
+        ground.receiveShadow = true;
+        scene.add(ground);
+
+        const group = new THREE.Group();
+        scene.children.forEach((c) => group.add(c));
+        scene.clear();
+        scene.add(group);
+
+        const ambient2 = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambient2);
+        const lights = [keyLight, fillLight, rimLight, accentLight, ground];
+        lights.forEach((l) => scene.add(l));
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetRotX = 0;
+        let targetRotY = 0;
+
+        container.addEventListener("mousemove", (e) => {
+          const rect = container.getBoundingClientRect();
+          mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          mouseY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+        });
+
+        container.addEventListener("mouseleave", () => {
+          mouseX = 0;
+          mouseY = 0;
+        });
+
+        function animate() {
+          requestAnimationFrame(animate);
+
+          targetRotY += (mouseX * 0.3 - targetRotY) * 0.04;
+          targetRotX += (-mouseY * 0.1 - targetRotX) * 0.04;
+
+          group.rotation.y += 0.004 + targetRotY * 0.002;
+          group.rotation.x += targetRotX * 0.002;
+          group.position.y = Math.sin(Date.now() * 0.0008) * 0.04;
+
+          renderer.render(scene, camera);
+        }
+        animate();
+
+        const resizeObserver = new ResizeObserver(() => {
+          const nw = container.clientWidth;
+          const nh = container.clientHeight;
+          camera.aspect = nw / nh;
+          camera.updateProjectionMatrix();
+          renderer.setSize(nw, nh);
+        });
+        resizeObserver.observe(container);
+      }
+
+      if (document.getElementById("three-canvas")) {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init3DSofa);
+        } else {
+          init3DSofa();
+        }
+      }
+    </script>
+  </body>
+</html>
